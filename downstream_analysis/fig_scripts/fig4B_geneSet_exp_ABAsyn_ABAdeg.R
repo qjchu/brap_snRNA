@@ -7,17 +7,17 @@ library(ggsci)
 library(ggrepel)
 
 sessionInfo()
-setwd('D:/CHU THINKBOOK/A03 白菜修改/scripts/')
+setwd('scripts/')
 
-rna_averages0 = read.table("D:/CHU HP/A06 白菜单细胞/revised_data/CK3D/CK3D_RNA_harmony_clusters_res1_avg.txt")
+rna_averages0 = read.table("../revised_data/CK3D/CK3D_RNA_harmony_clusters_res1_avg.txt")
 colnames(rna_averages0) = paste('CK3D_',colnames(rna_averages0), sep = '')
-rna_averages1 = read.table("D:/CHU HP/A06 白菜单细胞/revised_data/CK5D_subcluster/CK5D_subcluster_RNA_harmony_clusters_res1_avg.txt")
+rna_averages1 = read.table("../revised_data/CK5D_subcluster/CK5D_subcluster_RNA_harmony_clusters_res1_avg.txt")
 colnames(rna_averages1) = paste('CK5D_',colnames(rna_averages1), sep = '')
-rna_averages2 = read.table("D:/CHU HP/A06 白菜单细胞/revised_data/CK7D/CK7D_RNA_harmony_clusters_res1_avg.txt")
+rna_averages2 = read.table("../revised_data/CK7D/CK7D_RNA_harmony_clusters_res1_avg.txt")
 colnames(rna_averages2) = paste('CK7D_',colnames(rna_averages2), sep = '')
-rna_averages3 = read.table("D:/CHU HP/A06 白菜单细胞/revised_data/CK9D/CK9D_RNA_harmony_clusters_res1_avg.txt")
+rna_averages3 = read.table("../revised_data/CK9D/CK9D_RNA_harmony_clusters_res1_avg.txt")
 colnames(rna_averages3) = paste('CK9D_',colnames(rna_averages3), sep = '')
-rna_averages4 = read.table("D:/CHU HP/A06 白菜单细胞/revised_data/CK11D_subcluster/CK11D_subcluster_RNA_harmony_clusters_res1_avg.txt")
+rna_averages4 = read.table("../revised_data/CK11D_subcluster/CK11D_subcluster_RNA_harmony_clusters_res1_avg.txt")
 colnames(rna_averages4) = paste('CK11D_',colnames(rna_averages4), sep = '')
 
 rna_averages5 = read.table("../revised_data/TT5D/TT5D_combined_RNA_clusters_res1_Louvain_avg.txt")
@@ -464,4 +464,5 @@ if(TRUE){
   }
   
 }
+
 
