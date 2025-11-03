@@ -11,7 +11,7 @@ source("geom-curve2.R")
 show_col(pal_npg('nrc')(50))
 show_col(pal_igv('default')(50))
 show_col(pal_igv('alternating')(50))
-setwd("C:/Users/39485/Documents/CHU HP/A06 白菜单细胞/scripts/")
+setwd("scripts/")
 
 metadata = read.table('../CK_batch3_10samples/CK3D/CK3D_metadata_res1.txt')
 metadata = read.table('../CK_batch3_10samples/CK5D_subcluster/CK5D_metadata_res1_subcluster.txt')
@@ -101,4 +101,5 @@ if(TRUE){
     xlim(0,5)
   ggsave('../TT_batch3_8samples/TT_clusters_link.svg', plot = last_plot(), height = 8, width = 12)
   
+
 }
