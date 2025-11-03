@@ -10,30 +10,29 @@ library(stringr)
 library(sva)
 
 sessionInfo()
-setwd("D:/CHU THINKBOOK/A03 白菜修改/scripts/")
+setwd("scripts/")
 
-# 注意：需要把marker文件里面的单引号和双引号替换为空
-m1 = read.table('D:/CHU HP/A06 白菜单细胞/CK_batch3_10samples/CK3D/CK3D_res1_harmony_cluster_markers_anno.txt', header = TRUE, sep = "\t")
+m1 = read.table('../CK_batch3_10samples/CK3D/CK3D_res1_harmony_cluster_markers_anno.txt', header = TRUE, sep = "\t")
 colnames(m1) = c('p_val','avg_log2FC','pct.1','pct.2','p_val_adj','cluster','gene','atha_GeneID','atha_Symbol','computational_description','full_name')
 m1 <- m1 %>% arrange(cluster, p_val_adj, desc(avg_log2FC))
 m1_top <- m1 %>% group_by(cluster) %>% slice_head(n = 100) %>%ungroup()
 
-m2 = read.table('D:/CHU HP/A06 白菜单细胞/CK_batch3_10samples/CK5D_subcluster/CK5D_res1_subcluster_harmony_cluster_markers_anno.txt', header = TRUE, sep = "\t")
+m2 = read.table('../CK_batch3_10samples/CK5D_subcluster/CK5D_res1_subcluster_harmony_cluster_markers_anno.txt', header = TRUE, sep = "\t")
 colnames(m2) = c('p_val','avg_log2FC','pct.1','pct.2','p_val_adj','cluster','gene','atha_GeneID','atha_Symbol','computational_description','full_name')
 m2 <- m2 %>% arrange(cluster, p_val_adj, desc(avg_log2FC))
 m2_top <- m2 %>% group_by(cluster) %>% slice_head(n = 100) %>% ungroup()
 
-m3 = read.table('D:/CHU HP/A06 白菜单细胞/CK_batch3_10samples/CK7D/CK7D_res1_harmony_cluster_markers_anno.txt', header = TRUE, sep = "\t", quote = "")
+m3 = read.table('../CK_batch3_10samples/CK7D/CK7D_res1_harmony_cluster_markers_anno.txt', header = TRUE, sep = "\t", quote = "")
 colnames(m3) = c('p_val','avg_log2FC','pct.1','pct.2','p_val_adj','cluster','gene','atha_GeneID','atha_Symbol','computational_description','full_name')
 m3 <- m3 %>% arrange(cluster, p_val_adj, desc(avg_log2FC))
 m3_top <- m3 %>% group_by(cluster) %>% slice_head(n = 100) %>% ungroup()
 
-m4 = read.table('D:/CHU HP/A06 白菜单细胞/CK_batch3_10samples/CK9D/CK9D_res1_harmony_cluster_markers_anno.txt', header = TRUE, sep = "\t")
+m4 = read.table('../CK_batch3_10samples/CK9D/CK9D_res1_harmony_cluster_markers_anno.txt', header = TRUE, sep = "\t")
 colnames(m4) = c('p_val','avg_log2FC','pct.1','pct.2','p_val_adj','cluster','gene','atha_GeneID','atha_Symbol','computational_description','full_name')
 m4 <- m4 %>% arrange(cluster, p_val_adj, desc(avg_log2FC))
 m4_top <- m4 %>% group_by(cluster) %>% slice_head(n = 100) %>% ungroup()
 
-m5 = read.table('D:/CHU HP/A06 白菜单细胞/CK_batch3_10samples/CK11D_subcluster/CK11D_res1_subcluster_harmony_cluster_markers_anno.txt', header = TRUE, sep = "\t", quote = "")
+m5 = read.table('../CK_batch3_10samples/CK11D_subcluster/CK11D_res1_subcluster_harmony_cluster_markers_anno.txt', header = TRUE, sep = "\t", quote = "")
 colnames(m5) = c('p_val','avg_log2FC','pct.1','pct.2','p_val_adj','cluster','gene','atha_GeneID','atha_Symbol','computational_description','full_name')
 m5 <- m5 %>% arrange(cluster, p_val_adj, desc(avg_log2FC))
 m5_top <- m5 %>% group_by(cluster) %>% slice_head(n = 100) %>% ungroup()
@@ -119,7 +118,7 @@ markers = c("Bch01G042330", "Bch02G014800", "Bch06G006190", # EP-dividing
 # read RDS CK
 if(TRUE){
   # CK3D
-  sce = readRDS("D:/CHU HP/A06 白菜单细胞/RDS/CK3D_merge_res1.rds")
+  sce = readRDS("../RDS/CK3D_merge_res1.rds")
   dotplot_data_CK3D <- DotPlot(sce, features = markers)
   dotplot_data_CK3D[["data"]]$id = paste('CK3D_', dotplot_data_CK3D[["data"]]$id, sep = '')
   dotplot_data_CK3D[["data"]]$time = c('CK3D')
@@ -127,7 +126,7 @@ if(TRUE){
   # write.table(x = dotplot_data_CK3D[["data"]], file = '../CK_batch3_10samples/CK3D/CK3D_markers_dotplot_data.txt', sep = '\t', quote = FALSE, col.names = TRUE, row.names = TRUE)
   
   # CK5D
-  sce = readRDS("D:/CHU HP/A06 白菜单细胞/RDS/CK5D_merge_res1_subcluster.rds")
+  sce = readRDS("../RDS/CK5D_merge_res1_subcluster.rds")
   dotplot_data_CK5D <- DotPlot(sce, features = markers)
   dotplot_data_CK5D[["data"]]$id = paste('CK5D_', dotplot_data_CK5D[["data"]]$id, sep = '')
   dotplot_data_CK5D[["data"]]$time = c('CK5D')
@@ -135,7 +134,7 @@ if(TRUE){
   # write.table(x = dotplot_data_CK5D[["data"]], file = '../CK_batch3_10samples/CK5D_subcluster/CK5D_markers_dotplot_data.txt', sep = '\t', quote = FALSE, col.names = TRUE, row.names = TRUE)
   
   # CK7D
-  sce = readRDS("D:/CHU HP/A06 白菜单细胞/RDS/CK7D_merge_res1.rds")
+  sce = readRDS("../RDS/CK7D_merge_res1.rds")
   dotplot_data_CK7D <- DotPlot(sce, features = markers)
   dotplot_data_CK7D[["data"]]$id = paste('CK7D_', dotplot_data_CK7D[["data"]]$id, sep = '')
   dotplot_data_CK7D[["data"]]$time = c('CK7D')
@@ -143,7 +142,7 @@ if(TRUE){
   # write.table(x = dotplot_data_CK7D[["data"]], file = '../CK_batch3_10samples/CK7D/CK7D_markers_dotplot_data.txt', sep = '\t', quote = FALSE, col.names = TRUE, row.names = TRUE)
   
   # CK9D
-  sce = readRDS("D:/CHU HP/A06 白菜单细胞/RDS/CK9D_merge_res1.rds")
+  sce = readRDS("../RDS/CK9D_merge_res1.rds")
   dotplot_data_CK9D <- DotPlot(sce, features = markers)
   dotplot_data_CK9D[["data"]]$id = paste('CK9D_', dotplot_data_CK9D[["data"]]$id, sep = '')
   dotplot_data_CK9D[["data"]]$time = c('CK9D')
@@ -151,20 +150,13 @@ if(TRUE){
   # write.table(x = dotplot_data_CK9D[["data"]], file = '../CK_batch3_10samples/CK9D/CK9D_markers_dotplot_data.txt', sep = '\t', quote = FALSE, col.names = TRUE, row.names = TRUE)
   
   # CK11D
-  sce = readRDS("D:/CHU HP/A06 白菜单细胞/RDS/CK11D_merge_res1_subcluster.rds")
+  sce = readRDS("../RDS/CK11D_merge_res1_subcluster.rds")
   dotplot_data_CK11D <- DotPlot(sce, features = markers)
   dotplot_data_CK11D[["data"]]$id = paste('CK11D_', dotplot_data_CK11D[["data"]]$id, sep = '')
   dotplot_data_CK11D[["data"]]$time = c('CK11D')
   head(dotplot_data_CK11D[["data"]])
   # write.table(x = dotplot_data_CK11D[["data"]], file = '../CK_batch3_10samples/CK11D_subcluster/CK11D_markers_dotplot_data.txt', sep = '\t', quote = FALSE, col.names = TRUE, row.names = TRUE)
   
-  # dotplot_data_CK3D = read.table('D:/CHU HP/A06 白菜单细胞/CK_batch3_10samples/CK3D/CK3D_markers_dotplot_data.txt', sep = '\t', header = TRUE)
-  # dotplot_data_CK5D = read.table('D:/CHU HP/A06 白菜单细胞/CK_batch3_10samples/CK5D_subcluster/CK5D_markers_dotplot_data.txt', sep = '\t', header = TRUE)
-  # dotplot_data_CK7D = read.table('D:/CHU HP/A06 白菜单细胞/CK_batch3_10samples/CK7D/CK7D_markers_dotplot_data.txt', sep = '\t', header = TRUE)
-  # dotplot_data_CK9D = read.table('D:/CHU HP/A06 白菜单细胞/CK_batch3_10samples/CK9D/CK9D_markers_dotplot_data.txt', sep = '\t', header = TRUE)
-  # dotplot_data_CK11D = read.table('D:/CHU HP/A06 白菜单细胞/CK_batch3_10samples/CK11D_subcluster/CK11D_markers_dotplot_data.txt', sep = '\t', header = TRUE)
-  # 
-  # dotplot_data = rbind(dotplot_data_CK3D, dotplot_data_CK5D, dotplot_data_CK7D, dotplot_data_CK9D, dotplot_data_CK11D)
   dotplot_data = rbind(dotplot_data_CK3D[["data"]], dotplot_data_CK5D[["data"]], dotplot_data_CK7D[["data"]], dotplot_data_CK9D[["data"]], dotplot_data_CK11D[["data"]])
   
   table(dotplot_data$id)
@@ -327,3 +319,4 @@ if(TRUE){
   ggsave('../revised_data/TT_8samples/TT_markers_dotplot_top3.svg', plot = last_plot(), height = 7, width = 16)
 
 }
+
