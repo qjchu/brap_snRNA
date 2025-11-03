@@ -13,7 +13,7 @@ library(ggsci)
 library(dplyr)
 
 getwd()
-setwd('D:/CHU THINKBOOK/A03 白菜修改/scripts/')
+setwd('scripts/')
 
 if(TRUE){
   # CK3D
@@ -672,3 +672,4 @@ if(TRUE){
   
   
 }
+
