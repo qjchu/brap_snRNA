@@ -6,7 +6,7 @@ library(svglite)
 library(ggpubr)
 library(ggrepel)
 
-setwd('D:/CHU THINKBOOK/A03 白菜修改/scripts/')
+setwd('scripts/')
 
 celltype_DEG = function(TT_data, CK_data, TT_celltype, CK_celltype, celltype){
   temp_data = cbind(TT_data[,TT_celltype], CK_data[rownames(TT_data),CK_celltype])
@@ -26,7 +26,7 @@ celltype_DEG = function(TT_data, CK_data, TT_celltype, CK_celltype, celltype){
 
 # TT7D VS CK7D 
 if(TRUE){
-  CK7D <- read.table('D:/CHU HP/A06 白菜单细胞/CK_batch3_10samples/CK7D/CK7D_RNA_harmony_clusters_res1_avg.txt', header = TRUE)
+  CK7D <- read.table('../CK_batch3_10samples/CK7D/CK7D_RNA_harmony_clusters_res1_avg.txt', header = TRUE)
   colnames(CK7D) = c('CK7D SC-oi (c1)', 'CK7D SC (c2)', 'CK7D PEN (c3)', 'CK7D SC_Endosperm (c4)', 'CK7D SC-ii (c5)', 
                      'CK7D SC (c6)', 'CK7D SC_Dividing_Cell (c7)', 'CK7D CZSC (c8)', 'CK7D CZSC (c9)', 'CK7D SC (c10)', 
                      'CK7D EP_Dividing_Cell (c11)', 'CK7D SC (c12)','CK7D SC (c13)', 'CK7D SC-ii (c14)', 'CK7D SC_Endosperm (c15)', 
@@ -68,9 +68,7 @@ if(TRUE){
   temp_data12 = celltype_DEG(TT_data = TT7D, CK_data = CK7D, TT_celltype = 'TT7D SC-ii (c2)', CK_celltype = 'CK7D SC-ii (c5)', celltype = 'SC-ii')
   temp_data13 = celltype_DEG(TT_data = TT7D, CK_data = CK7D, TT_celltype = 'TT7D SC-endosperm (c4)', CK_celltype = 'CK7D SC_Endosperm (c15)', celltype = 'SC_Endosperm')
   
-  # 所有比较结果
   if(TRUE){
-    # 整合数据
     temp_data = rbind(temp_data1, temp_data2, temp_data3, temp_data4, temp_data5, temp_data6, temp_data7,temp_data8,temp_data9,temp_data10,temp_data11,temp_data12,temp_data13)
     
     temp_data$jittered_x <- jitter(as.numeric(factor(temp_data$cluster)), amount = 0.35)
@@ -183,7 +181,7 @@ if(TRUE){
     # ggsave('../CK_batch3_10samples/TT7D_VS_CK7D_celltype_v4.svg', plot = last_plot(), height = 24, width = 8, bg = "transparent")
   }
   
-  # fig4A 选取部分细胞类型进行展示
+  # fig4A
   if(TRUE){
     temp_data = rbind(temp_data1, temp_data2, temp_data3, temp_data4, temp_data5, temp_data6,temp_data7,temp_data12,temp_data13)
     temp_data$jittered_x <- jitter(as.numeric(factor(temp_data$cluster)), amount = 0.35)
@@ -260,7 +258,7 @@ if(TRUE){
     ggsave('../revised_data/TT7D_VS_CK7D_celltype_fig4A_v2.svg', plot = last_plot(), height = 18, width = 8, bg = "transparent")
     ggsave('../revised_data/TT7D_VS_CK7D_celltype_fig4A_v2.png', plot = last_plot(), height = 18, width = 8, bg = "transparent")
     
-    ## S8 展示所有细胞类型
+    ## S8 
     temp_data = rbind(temp_data1, temp_data2, temp_data3, temp_data4, temp_data5, temp_data6, temp_data7, temp_data8, temp_data9, temp_data10, temp_data11, temp_data12, temp_data13)
     
     temp_data$jittered_x <- jitter(as.numeric(factor(temp_data$cluster)), amount = 0.35)
@@ -316,3 +314,4 @@ if(TRUE){
   }
   
 }
+
