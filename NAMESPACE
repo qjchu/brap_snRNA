@@ -1,0 +1,16 @@
+import(methods)
+import(AnnotationDbi)
+
+### Only put what is statically exported here. All the AnnObj instances
+### created at load time are dynamically exported (refer to R/zzz.R for
+### the details).
+export(
+    org.Brapa.eg,
+    org.Brapa.eg_dbconn,
+    org.Brapa.eg_dbfile,
+    org.Brapa.eg_dbschema,
+    org.Brapa.eg_dbInfo,
+
+    org.Brapa.egORGANISM
+)
+
