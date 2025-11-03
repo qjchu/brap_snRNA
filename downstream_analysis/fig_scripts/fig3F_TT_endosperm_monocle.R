@@ -13,18 +13,16 @@ library(clusterProfiler)
 library(org.Brapaoleracea.eg.db)
 
 show_col(pal_igv('default')(50))
-setwd('D:/CHU THINKBOOK/A03 白菜修改/scripts/')
+setwd('scripts/')
 
 cds = readRDS('../revised_data/TT_8samples/monocle_res/TT_combined_Endo_5D7D8D9D11D/TT_combined_Endo_5D7D8D9D11D_monocle.rds')
 
-# 轨迹图
 plot_cell_trajectory(cds, color_by = 'Pseudotime', size=1, show_backbone=TRUE, alpha = 0.5) + 
   scale_color_bs5('red') +
   theme(legend.position = 'right')
 ggsave('../revised_data/TT_8samples/monocle_res/TT_combined_Endo_5D7D8D9D11D_monocle_time.png', plot = last_plot(), height = 4, width = 7, bg = "transparent")
 ggsave('../revised_data/TT_8samples/monocle_res/TT_combined_Endo_5D7D8D9D11D_monocle_time.svg', plot = last_plot(), height = 4, width = 7, bg = "transparent")
 
-# 轨迹图
 plot_cell_trajectory(cds, color_by = 'celltype', size=1, show_backbone=TRUE, alpha = 0.5) + 
   theme(legend.position = 'right') 
 plot_cell_trajectory(cds, color_by = 'celltype', size=1, show_backbone=TRUE, alpha = 0.5) + 
@@ -90,7 +88,6 @@ ggsave('../revised_data/TT_8samples/monocle_res/TT_combined_Endo_5D7D8D9D11D_mon
 
 
 
-# 指定基因的可视化
 deg = read.table('../revised_data/TT_8samples/monocle_res/TT_combined_Endo_5D7D8D9D11D_monocle_DEG.txt')
 
 keygenes = c('Bch02G005190','Bch09G046750','Bo2g011110','Bch06G036690','Bch06G019890','Bch06G029280') 
@@ -101,7 +98,6 @@ plot_genes_in_pseudotime(cds[keygenes,], color_by = "State")
 plot_genes_in_pseudotime(cds[keygenes,], color_by = "time")
 plot_genes_in_pseudotime(cds[keygenes,], color_by = "Pseudotime")
 
-# 拟时差异基因
 time_diff <- differentialGeneTest(cds[rownames(deg[1:2000,]),], fullModelFormulaStr = "~sm.ns(Pseudotime)")
 time_diff = time_diff[time_diff$qval < 0.05,c(5,2,3,4,1,6,7)]
 
@@ -110,10 +106,6 @@ p = plot_pseudotime_heatmap(cds[time_diff$GeneName,], num_clusters = 5, cores = 
 ggsave('../revised_data/TT_8samples/monocle_res/TT_combined_Endo_5D7D8D9D11D_monocle_heatmap.png', plot = p, height = 10, width = 4, bg = "transparent")
 ggsave('../revised_data/TT_8samples/monocle_res/TT_combined_Endo_5D7D8D9D11D_monocle_heatmap.svg', plot = p, height = 10, width = 4, bg = "transparent")
 
-# 分支点的差异基因
-# https://www.jianshu.com/p/82a08029f985
-
-# 差异基因富集分析
 p$tree_row
 clusters <- cutree(p$tree_row, k = 5)
 clustering <- as.data.frame(clusters)
@@ -143,4 +135,5 @@ if (TRUE) {
       facet_grid(ONTOLOGY~., scales = "free", space = "free") + NoLegend()
   }
 }
+
 
