@@ -8,11 +8,11 @@ library(ggrepel)
 library(tidyr)
 
 getwd()
-setwd("D:/CHU THINKBOOK/A03 白菜修改/scripts/")
+setwd("scripts/")
 
 # time-point umap plot CK
 if(TRUE){
-  metadata = read.table("D:/CHU HP/A06 白菜单细胞/CK_batch3_10samples/10samples/CK_10samples_batch3_metadata_res1.txt", header = TRUE, sep = "\t")
+  metadata = read.table("../CK_batch3_10samples/10samples/CK_10samples_batch3_metadata_res1.txt", header = TRUE, sep = "\t")
   table(metadata$harmony_clusters_res1)
   table(metadata$orig.ident)
   
@@ -67,7 +67,6 @@ if(TRUE){
     theme(text =  element_text(size = 15), panel.grid.major = element_blank(),  panel.grid.minor = element_blank(),  axis.line = element_blank(),  axis.ticks =  element_blank(), axis.title =  element_blank(),  axis.text = element_blank(), panel.background = element_rect(fill = "transparent",colour = NA), plot.background = element_rect(fill = "transparent"), legend.position = "none")
   ggsave('../CK_batch3_10samples/10samples/10samples_batch3_res1_umap_CK11D.png', plot = last_plot(), height = 8, width = 8, bg = "transparent")
   
-  # 每簇中不同样本的占比
   if(TRUE){
     table(metadata[metadata$harmony_clusters_res1 == 1,]$orig.ident)
     
@@ -76,7 +75,6 @@ if(TRUE){
       dplyr::summarise(count = n(), .groups = 'drop') %>%  
       dplyr::ungroup()
     
-    # 根据11D细胞占比排序
     sum(cluster_sample_counts[cluster_sample_counts$orig.ident2 == 'CK11D','count'])
     cluster_sample_counts$perc = cluster_sample_counts$count/18316
     a = cluster_sample_counts[cluster_sample_counts$orig.ident2 == 'CK11D',]
@@ -193,7 +191,6 @@ if(TRUE){
     theme(text =  element_text(size = 15), panel.grid.major = element_blank(),  panel.grid.minor = element_blank(),  axis.line = element_blank(),  axis.ticks =  element_blank(), axis.title =  element_blank(),  axis.text = element_blank(), panel.background = element_rect(fill = "transparent",colour = NA), plot.background = element_rect(fill = "transparent"), legend.position = "none")
   ggsave('../revised_data/TT_8samples/TT_combined_res1_umap_TT11D.png', plot = last_plot(), height = 8, width = 8, bg = "transparent")
   
-  # 每簇中不同样本的占比
   if(TRUE){
     table(metadata[metadata$harmony_clusters_res1 == 1,]$orig.ident)
     head(metadata)
@@ -203,7 +200,6 @@ if(TRUE){
       dplyr::summarise(count = n(), .groups = 'drop') %>%  
       dplyr::ungroup()
     
-    # 根据11D细胞占比排序
     sum(cluster_sample_counts[cluster_sample_counts$orig.ident2 == 'TT11D','count'])
     cluster_sample_counts$perc = cluster_sample_counts$count/5146
     a = cluster_sample_counts[cluster_sample_counts$orig.ident2 == 'TT11D',]
@@ -273,3 +269,4 @@ if(TRUE){
     
   }
 }
+
