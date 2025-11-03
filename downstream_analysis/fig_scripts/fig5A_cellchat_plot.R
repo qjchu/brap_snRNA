@@ -2,11 +2,11 @@ library(ggplot2)
 library(ggsci)
 
 getwd()
-setwd('D:/CHU THINKBOOK/A03 白菜修改/scripts/')
+setwd('scripts/')
 
 # CK3D
 if(TRUE){
-  data = read.table('D:/CHU HP/A06 白菜单细胞/cell_to_cell_communicate/CK3D_net_lr.txt', header = TRUE, sep = ',')
+  data = read.table('../cell_to_cell_communicate/CK3D_net_lr.txt', header = TRUE, sep = ',')
   aa_source = c()
   aa_target = c()
   aa_self = c()
@@ -28,7 +28,7 @@ plot_data = aa
 
 # CK5D
 if(TRUE){
-  data = read.table('D:/CHU HP/A06 白菜单细胞/cell_to_cell_communicate/CK5D_net_lr.txt', header = TRUE, sep = ',')
+  data = read.table('../cell_to_cell_communicate/CK5D_net_lr.txt', header = TRUE, sep = ',')
   aa_source = c()
   aa_target = c()
   aa_self = c()
@@ -50,7 +50,7 @@ plot_data = rbind(plot_data,aa)
 
 # CK7D
 if(TRUE){
-  data = read.table('D:/CHU HP/A06 白菜单细胞/cell_to_cell_communicate/CK7D_net_lr.txt', header = TRUE, sep = ',')
+  data = read.table('../cell_to_cell_communicate/CK7D_net_lr.txt', header = TRUE, sep = ',')
   aa_source = c()
   aa_target = c()
   aa_self = c()
@@ -72,7 +72,7 @@ plot_data = rbind(plot_data,aa)
   
 # CK9D
 if(TRUE){
-  data = read.table('D:/CHU HP/A06 白菜单细胞/cell_to_cell_communicate/CK9D_net_lr.txt', header = TRUE, sep = ',')
+  data = read.table('../cell_to_cell_communicate/CK9D_net_lr.txt', header = TRUE, sep = ',')
   aa_source = c()
   aa_target = c()
   aa_self = c()
@@ -95,7 +95,7 @@ plot_data = rbind(plot_data,aa)
 
 # CK11D
 if(TRUE){
-  data = read.table('D:/CHU HP/A06 白菜单细胞/cell_to_cell_communicate/CK11D_net_lr.txt', header = TRUE, sep = ',')
+  data = read.table('../cell_to_cell_communicate/CK11D_net_lr.txt', header = TRUE, sep = ',')
   aa_source = c()
   aa_target = c()
   aa_self = c()
@@ -302,4 +302,5 @@ ggplot(plot_data_all, aes(x = aa_source, y = aa_target, size = aa_self, color = 
         legend.position = "right")
 ggsave('../revised_data/CK_TT_cellchat.svg', plot = last_plot(), height = 8.1, width = 20)
 ggsave('../revised_data/CK_TT_cellchat.png', plot = last_plot(), height = 8.1, width = 20, bg = "transparent")
+
 
