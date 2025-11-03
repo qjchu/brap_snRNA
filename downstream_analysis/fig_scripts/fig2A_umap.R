@@ -11,12 +11,12 @@ library(stringr)
 
 sessionInfo()
 getwd()
-setwd("D:/CHU THINKBOOK/A03 白菜修改/scripts/")
+setwd("scripts/")
 
 # umap plot
 if(TRUE){
   ## CK7D
-  metadata = read.table("D:/CHU HP/A06 白菜单细胞/CK_batch3_10samples/CK7D/CK7D_metadata_res1.txt", header = TRUE, sep = "\t")
+  metadata = read.table("../CK_batch3_10samples/CK7D/CK7D_metadata_res1.txt", header = TRUE, sep = "\t")
   table(metadata$harmony_clusters_res1)
   table(metadata$orig.ident)
   
@@ -56,4 +56,5 @@ if(TRUE){
           plot.background=element_rect(fill = "transparent"),
           legend.position = "none") 
   ggsave('../revised_data/TT7D/TT7D_combined_res1_5_harmony_cluster_nolabel.svg', plot = last_plot(), height = 8, width = 8, bg = "transparent")
+
 } 
