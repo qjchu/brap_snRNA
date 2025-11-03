@@ -11,7 +11,7 @@ library(sva)
 show_col(pal_npg('nrc')(50))
 show_col(pal_igv('default')(50))
 show_col(pal_igv('alternating')(50))
-setwd('D:/CHU THINKBOOK/A03 白菜修改/scripts/')
+setwd('scripts/')
 source("fig/geom-curve2.R")
 
 # TT
@@ -19,7 +19,7 @@ if(TRUE){
   metadata = read.table('../revised_data/TT5D/TT5D_combined_metadata_res1_Louvain.txt')
   metadata = read.table('../revised_data/TT11D/TT11D_combined_metadata_res1.txt')
   a = table(metadata$unintegrated_clusters_res1)/sum(table(metadata$unintegrated_clusters_res1))
-  # 根据excel里面的顺序排序
+
   a[c(18,24,15,8,10,14,17,23,5,11,19,20,2,6,13,4,3,16,1,7,9,12,21,22)] # TT5D
   a[c(17,1,11,9,13,5,2,3,4,6,7,8,10,12,14,15,16)] # TT11D
   
@@ -27,7 +27,6 @@ if(TRUE){
   metadata = read.table('../revised_data/TT8D/TT8D_combined_metadata_res1_rep1_rep3.txt')
   metadata = read.table('../revised_data/TT9D/TT9D_combined_metadata_res1_Louvain.txt')
   a = table(metadata$harmony_clusters_res1)/sum(table(metadata$harmony_clusters_res1))
-  # 根据excel里面的顺序排序
   a[c(11,25,22,16,17,19,23,9,4,14,2,20,6,1,10,21,24,3,5,7,8,12,13,15,18)] # TT7D
   a[c(15,19,22,24,17,12,2,9,21,7,6,13,4,10,5,23,1,3,8,11,14,16,18,20)] # TT8D
   a[c(20,28,24,12,13,15,21,5,22,19,4,10,18,7,8,9,26,1,2,3,6,11,14,16,17,23,25,27)] # TT9D
@@ -124,4 +123,5 @@ if(TRUE){
     xlim(0,5)
   ggsave('../revised_data/fig3B_TT_clusters_link.svg', plot = last_plot(), height = 8, width = 12)
   
+
 }
