@@ -14,9 +14,9 @@ Together, these approaches provide robust evidence for cell type assignment.
 
 | Script | Purpose | Input | Output |
 |--------|---------|-------|--------|
-| `marker_gene_anno.R` | Generates UMAP plots, sample proportion bar charts, and a series of DotPlot panels with known marker genes. | `TT9D_combined_metadata_res1_Louvain.txt`<br>`TT9D_merge_res1.rds` | UMAP SVG files, bar plot, dot plots (viewed interactively) |
-| `diff_gene_GOres_anno.R` | Performs GO enrichment (BP, CC, MF) for each cluster using `clusterProfiler`; creates bubble plots for top terms. | `TT9D_res1_harmony_cluster_markers.txt`<br>`org.Brapa.eg.db` package | `TT9D_cluster_marker_GOres.txt` (combined results)<br>Bubble plots for BP/CC/MF |
-| `datasets_correlation_anno.R` | Compares cluster average expression with external expression data from PNAS LCM (GSE12404) and NaturePlant RNA‑seq (GSE157145), with and without ComBat batch correction. | `TT9D_RNA_harmony_clusters_res1_avg.txt`<br>External expression files<br>ID mapping files (`atha_to_bchi_*.txt`) | Correlation heatmaps, hierarchical clustering dendrograms, PCA biplots |
+| `marker_gene_anno.R` | Generates UMAP plots, sample proportion bar charts, and a series of DotPlot panels with known marker genes. | `*_metadata.txt`<br>`*_merge.rds` | UMAP SVG files, bar plot, dot plots (viewed interactively) |
+| `diff_gene_GOres_anno.R` | Performs GO enrichment (BP, CC, MF) for each cluster using `clusterProfiler`; creates bubble plots for top terms. | `*_cluster_markers.txt`<br>`org.Brapa.eg.db` package | `*_cluster_marker_GOres.txt` (combined results)<br>Bubble plots for BP/CC/MF |
+| `datasets_correlation_anno.R` | Compares cluster average expression with external expression data from PNAS LCM (GSE12404) and NaturePlant RNA‑seq (GSE157145), with and without ComBat batch correction. | `*_clusters_res1_avg.txt`<br>External expression files<br>ID mapping files (`atha_to_bchi_*.txt`) | Correlation heatmaps, hierarchical clustering dendrograms, PCA biplots |
 
 ---
 
