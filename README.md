@@ -72,8 +72,6 @@ devtools::install_github("qjchu/brap_snRNA/org.Brapa.eg.db")
 
 ## Step‑by‑Step Instructions
 
----
-
 ### Step 1 – Raw Data Processing with Cell Ranger and Seurat
 
 The pipeline starts with raw FASTQ files from snRNA‑seq. We use **Cell Ranger** to align reads, count UMIs, and generate the gene‑expression matrix.
@@ -99,7 +97,7 @@ cellranger count \
 
 After completion, each sample will have an output directory (e.g., `CK3D_1_bam`) containing the `outs/filtered_feature_bc_matrix` folder with the count matrix.
 
-#### Seurat
+#### Cell Clustering and Dimensionality Reduction (Seurat)
 
 Once the count matrices are generated, use the provided R scripts to load them into Seurat objects.
 
