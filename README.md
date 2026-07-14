@@ -72,13 +72,45 @@ devtools::install_github("qjchu/brap_snRNA/org.Brapa.eg.db")
 
 ## Step‑by‑Step Instructions
 
-### Step 1 – Load Your Data
-Use the provided scripts to import your snRNA‑seq data.
+感谢你提供这些具体信息。我已查看了 `get_multi_samples_rds.R` 脚本的内容，它确实是直接读取 Cell Ranger 输出的 `filtered_feature_bc_matrix` 文件夹。根据这些信息，我将 README 的 **Step 1** 修改为以下版本，以清晰展示从原始数据到 R 对象的完整流程：
 
-- **Single sample**: `get_single_sample_rds.R` loads one Seurat object (RDS).
-- **Multiple samples**: `get_multi_samples_rds.R` loads and merges several samples into a combined Seurat object.
+---
 
-These scripts assume that your data have already been pre‑processed (quality control, normalisation, dimension reduction) and saved as Seurat objects.
+### Step 1 – Raw Data Processing with Cell Ranger and Seurat
+
+The pipeline starts with raw FASTQ files from snRNA‑seq. We use **Cell Ranger** to align reads, count UMIs, and generate the gene‑expression matrix.
+
+#### Cell Ranger Count
+
+For each sample, run `cellranger count` with the following parameters (adjust paths to your own environment):
+
+```bash
+cellranger count \
+  --noexit \
+  --include-introns true \
+  --chemistry SC3Pv3 \
+  --id=CK3D_1_bam \
+  --fastqs=/your/own/path/CK3D_1 \
+  --sample=CK3D_1 \
+  --transcriptome=/your/own/path/genome/Bchinensis
+```
+
+- `--include-introns true`: includes intronic reads, which is standard for single‑nucleus RNA‑seq.
+- `--chemistry SC3Pv3`: specifies the 10x Genomics 3′ v3 chemistry.
+- `--transcriptome`: points to the *B. chinensis* (or *B. napus*) reference genome.
+
+After completion, each sample will have an output directory (e.g., `CK3D_1_bam`) containing the `outs/filtered_feature_bc_matrix` folder with the count matrix.
+
+#### Seurat
+
+Once the count matrices are generated, use the provided R scripts to load them into Seurat objects.
+
+- **Single sample**: `get_single_sample_rds.R` reads one sample’s `filtered_feature_bc_matrix` and creates a Seurat object.
+- **Multiple samples**: `get_multi_samples_rds.R` reads multiple samples, merges them into a combined Seurat object, and performs basic quality filtering (e.g., removing cells with extreme `nFeature_RNA` based on quantiles). It then runs a standard Seurat workflow including normalisation, PCA, clustering, UMAP/t‑SNE, and integration (CCA and RPCA).
+
+These scripts expect the Cell Ranger output directories to be organised in a consistent folder structure. You may need to adjust the file paths inside the scripts to match your own data locations.
+
+> **Note**: The `get_multi_samples_rds.R` script is designed for *B. napus* data and uses the `Bchinensis` reference. If your data use a different genome, update the `transcriptome` path accordingly.
 
 ---
 
