@@ -162,12 +162,6 @@ Additionally, `downstream_analysis/datasets_correlation.R` can be used to assess
 
 ---
 
-## License
-
-This project is licensed under the [MIT License](https://opensource.org/licenses/MIT). You are free to use, modify, and distribute the code, provided that you retain the original copyright notice.
-
----
-
 ## Contact & Citation
 
 If you use this repository in your research, please cite the original publication (details to be added) and provide a link to this GitHub repository.
