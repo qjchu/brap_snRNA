@@ -59,7 +59,30 @@ library(org.Brapaoleracea.eg.db)
 columns(org.Brapaoleracea.eg.db)   # see available annotation types
 ```
 
-You can also download our newly built package from:
+### Pre‑built Packages (Baidu Cloud)
+
+If you prefer not to build the package yourself, you can download the pre‑built versions directly from Baidu Cloud:
+
+| Package | Description | Baidu Cloud Link | Password |
+|---------|-------------|------------------|----------|
+| `org.Brapa.eg.db` | GO annotation database for *B. rapa* (Chinese cabbage) genome only | [https://pan.baidu.com/s/1fUUyDEbTNsqNxmxjrrah5w?pwd=brap](https://pan.baidu.com/s/1fUUyDEbTNsqNxmxjrrah5w?pwd=brap) | `brap` |
+| `org.BrapoleKEGG.eg.db` | KEGG pathway database for the merged *B. rapa* + *B. oleracea* genome | [https://pan.baidu.com/s/1tuuGfHcn0lJxeE3mnbkyIA?pwd=brap](https://pan.baidu.com/s/1tuuGfHcn0lJxeE3mnbkyIA?pwd=brap) | `brap` |
+| `org.Brapaoleracea.eg.db` | GO annotation database for the merged *B. rapa* + *B. oleracea* genome | [https://pan.baidu.com/s/1WfOAke-yrpLmCl4LefPqbQ?pwd=brap](https://pan.baidu.com/s/1WfOAke-yrpLmCl4LefPqbQ?pwd=brap) | `brap` |
+
+**Package descriptions:**
+
+- **`org.Brapa.eg.db`** – GO annotations based solely on the *Brassica rapa* (Chinese cabbage / 白菜) reference genome. Use this if your data align to the *B. rapa* genome only.
+- **`org.BrapoleKEGG.eg.db`** – KEGG pathway annotations for the merged *B. rapa* + *B. oleracea* (cabbage / 甘蓝) genome. Suitable for pathway enrichment when working with the combined reference.
+- **`org.Brapaoleracea.eg.db`** – GO annotations for the merged *B. rapa* + *B. oleracea* genome. Recommended for GO enrichment when using the merged reference.
+
+After downloading the package source (`.tar.gz` or folder), install it locally:
+
+```r
+# For example, install the GO database for the merged genome
+install.packages("/path/to/downloaded/org.Brapaoleracea.eg.db/", repos = NULL, type = "source")
+```
+
+Choose the package that best matches your reference genome and analysis needs.
 
 ---
 
