@@ -50,8 +50,8 @@ source("marker_gene_anno.R")
 After obtaining cluster markers (from `FindAllMarkers`), this script:
 
 - Filters markers by adjusted p‑value < 0.01 and |log₂FC| > 1.
-- For each cluster (1–22), runs `enrichGO` using the `org.Brapa.eg.db` package (for *B. rapa*).
-- Saves all results to `TT9D_cluster_marker_GOres.txt`.
+- For each cluster, runs `enrichGO` using the `org.Brapa.eg.db` package (for *B. rapa*).
+- Saves all results to `*_cluster_marker_GOres.txt`.
 - Reads back the combined file and creates three separate bubble plots for **B**iological **P**rocess, **C**ellular **C**omponent, and **M**olecular **F**unction, showing the top 2 enriched terms per cluster.
 
 The bubble plots show GeneRatio (x‑axis), term description (y‑axis), point size = gene count, and colour = adjusted p‑value. Cluster numbers are labelled on each point.
