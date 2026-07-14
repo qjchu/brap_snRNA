@@ -72,8 +72,6 @@ devtools::install_github("qjchu/brap_snRNA/org.Brapa.eg.db")
 
 ## Step‑by‑Step Instructions
 
-感谢你提供这些具体信息。我已查看了 `get_multi_samples_rds.R` 脚本的内容，它确实是直接读取 Cell Ranger 输出的 `filtered_feature_bc_matrix` 文件夹。根据这些信息，我将 README 的 **Step 1** 修改为以下版本，以清晰展示从原始数据到 R 对象的完整流程：
-
 ---
 
 ### Step 1 – Raw Data Processing with Cell Ranger and Seurat
