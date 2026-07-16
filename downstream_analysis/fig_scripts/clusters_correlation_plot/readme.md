@@ -99,7 +99,7 @@ The custom `geom_curve2` function is defined in `geom-curve2.R`; it automaticall
 
 The final graphic is a network plot with nodes positioned according to the coordinates, curved edges connecting correlated clusters, node size reflecting cell proportion, colour indicating tissue group, and labels showing detailed cell‑type names.
 
-![Example network plot](CK_clusters_link.svg) *(schematic)*
+<img width="658" height="546" alt="image" src="https://github.com/user-attachments/assets/2a56a2fc-f662-4aac-b663-a2b3c764bbf7" />
 
 ---
 
