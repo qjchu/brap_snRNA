@@ -90,22 +90,27 @@ Below is a brief description of the key output images (placeholders; actual plot
 
 ### Trajectory coloured by Pseudotime
 <img width="341" height="195" alt="image" src="https://github.com/user-attachments/assets/670f0614-7d5e-42b0-a3a1-84eb60a8a166" />
+
 Cells are shaded from pink (early) to darkred (late) along the inferred path.
 
 ### Trajectory coloured by Cell Type
 <img width="264" height="200" alt="image" src="https://github.com/user-attachments/assets/aa45cd76-9f7f-40b2-a7a0-32f208ea2ad7" />
+
 Different cell populations (e.g., PCD vs active endosperm) are shown in distinct colours.
 
 ### Faceted Trajectory by Time Point
 <img width="689" height="195" alt="image" src="https://github.com/user-attachments/assets/3d5b2037-a690-4672-98cd-e7de32187cce" />
+
 The same trajectory is shown separately for each developmental time point (TT5D to TT11D), highlighting sample distribution along the path.
 
 ### Pseudotime Density Distribution
 <img width="341" height="195" alt="image" src="https://github.com/user-attachments/assets/888a3575-1735-4b58-be67-f745336c0213" />
+
 Overlap of pseudotime values across time points, showing when different stages are most abundant.
 
 ### Heatmap of Pseudotime‑varying Genes
 <img width="746" height="237" alt="image" src="https://github.com/user-attachments/assets/4b2d296f-63d4-4ce8-9813-eabccb587134" />
+
 Expression of significant genes ordered by pseudotime; gene clusters are identified by hierarchical clustering.
 
 ### GO Enrichment per Gene Cluster
